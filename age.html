@@ -2,29 +2,30 @@
 <head>
   <title>New Tab</title>
   <style>
-    body { font-family: monaco; color: #000; background: #f6f6f6; }
-    p { width: 100%; text-align: center; position: absolute; top: 35%; }
-    b { font-size: 80px; }
-    span { font-size: 27px; position: relative; bottom: 27px; right: 9px; }
+    body { background: #f6f6f6; color: #000; font-family: monaco; }
+    p { position: absolute; top: 35%; text-align: center; width: 100%; }
+    #year { font-size: 80px; }
+    #deciyear { font-size: 27px; position: relative; bottom: 27px; right: 9px; }
   </style>
 </head>
 <body>
   <p>
     <b id="year"></b>
-    <span id="milliyear"></span>
+    <span id="deciyear"></span>
   </p>
   <script>
     var dob = new Date("January 1, 1980 00:00:00");
     var render = function() {
       var now = new Date();
       var duration = now - dob;
-      var majorMinor = (duration / 31556900000).toFixed(9).toString().split(".");
+      var decisecondsInYear = 31556900000;
+      var majorMinor = (duration / decisecondsInYear).toFixed(9).toString().split(".");
       var year = majorMinor[0];
-      var milliyear = majorMinor[1];
+      var deciyear = majorMinor[1];
       var yearEl = document.getElementById("year");
-      var milliyearEl = document.getElementById("milliyear");
+      var deciyearEl = document.getElementById("deciyear");
       yearEl.innerHTML = year;
-      milliyearEl.innerHTML = "." + milliyear;
+      deciyearEl.innerHTML = "." + deciyear;
     }
     setInterval(render, 100);
   </script>
