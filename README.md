@@ -1,6 +1,6 @@
 # Description
 
-Watch your age change in real-time in new browser tabs! Based on
+Watch your age change in new browser tabs! Based on
 [Alex MacCaw's Motivation plugin](http://blog.alexmaccaw.com/life-hacks).
 
 # Installation

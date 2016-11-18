@@ -20,6 +20,11 @@
       var now = new Date();
       var duration = now - dob;
       var decisecondsInYear = 31556900000;
+
+      if (now.getFullYear() % 4 == 0) { // leap year
+        decisecondsInYear += 864000;
+      }
+
       var majorMinor = (duration / decisecondsInYear).toFixed(9).toString().split(".");
       var year = majorMinor[0];
       var deciyear = majorMinor[1];
