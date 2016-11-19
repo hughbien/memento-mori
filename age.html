@@ -16,24 +16,35 @@
   </p>
   <script>
     var dob = new Date("January 1, 1980 00:00:00");
-    var afterLeapDay = dob.getMonth() > 1;
+
+    function getYear(now) {
+      var year = now.getFullYear() - dob.getFullYear();
+      var delta = new Date(now.getTime());
+      delta.setFullYear(dob.getFullYear());
+
+      if (delta < dob) {
+        year -= 1;
+      }
+      return year.toString();
+    }
+
+    function getDeciyear(now) {
+      var delta = new Date(now.getTime());
+      delta.setFullYear(dob.getFullYear());
+
+      if (delta < dob) {
+        delta.setFullYear(delta.getFullYear() + 1);
+      }
+
+      var duration = delta - dob;
+      var decisecondsInYear = 31556900000;
+      return (duration / decisecondsInYear).toFixed(9).toString().split(".")[1];
+    }
 
     setInterval(function() {
       var now = new Date();
-      var duration = now - dob;
-      var decisecondsInYear = 31556900000;
-
-      if (afterLeapDay && now.getFullYear() % 4 == 0) {
-        decisecondsInYear += 864000;
-      }
-
-      var majorMinor = (duration / decisecondsInYear).toFixed(9).toString().split(".");
-      var year = majorMinor[0];
-      var deciyear = majorMinor[1];
-      var yearEl = document.getElementById("year");
-      var deciyearEl = document.getElementById("deciyear");
-      yearEl.innerHTML = year;
-      deciyearEl.innerHTML = "." + deciyear;
+      document.getElementById("year").innerHTML = getYear(now);
+      document.getElementById("deciyear").innerHTML = "." + getDeciyear(now);
     }, 100);
   </script>
 </body>
