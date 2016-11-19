@@ -16,12 +16,14 @@
   </p>
   <script>
     var dob = new Date("January 1, 1980 00:00:00");
-    var render = function() {
+    var afterLeapDay = dob.getMonth() > 1;
+
+    setInterval(function() {
       var now = new Date();
       var duration = now - dob;
       var decisecondsInYear = 31556900000;
 
-      if (now.getFullYear() % 4 == 0) { // leap year
+      if (afterLeapDay && now.getFullYear() % 4 == 0) {
         decisecondsInYear += 864000;
       }
 
@@ -32,8 +34,7 @@
       var deciyearEl = document.getElementById("deciyear");
       yearEl.innerHTML = year;
       deciyearEl.innerHTML = "." + deciyear;
-    }
-    setInterval(render, 100);
+    }, 100);
   </script>
 </body>
 </html>
