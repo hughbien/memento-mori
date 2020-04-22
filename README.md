@@ -5,6 +5,6 @@ Watch your age change in new browser tabs! Based on
 
 # Installation
 
-1. Save `age.html` locally to `~/.age.html`
+1. Save `index.html` locally to `~/.memento-mori.html`
 2. Edit your date of birth `var dob = new Date("...");`
-3. Configure your browser's homepage to `~/.age.html`
+3. Configure your browser's homepage to `~/.memento-mori.html`
